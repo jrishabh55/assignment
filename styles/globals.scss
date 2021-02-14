@@ -1,3 +1,100 @@
+@layer base {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button,
+  a,
+  div,
+  ul,
+  li,
+  nav {
+    @apply text-gray-900;
+  }
+
+  body {
+    @apply bg-gray-100;
+  }
+  div {
+    @apply bg-white;
+  }
+}
+
+.flex-center {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+}
+
+.card {
+  @apply shadow;
+  @apply border;
+  @apply rounded-lg;
+}
+
+.btn {
+  @apply p-3;
+  @apply rounded-lg;
+  @apply shadow-md;
+  @apply text-center;
+  @apply border;
+  @apply text-white;
+  @apply text-lg;
+
+  &.block {
+    @apply w-full;
+  }
+
+  &.btn--primary {
+    @apply bg-blue-500;
+    @apply border-blue-600;
+    &.darker {
+      @apply bg-blue-700;
+      @apply border-blue-800;
+    }
+  }
+  &.btn--danger {
+    @apply bg-red-500;
+    @apply border-red-600;
+    &.darker {
+      @apply bg-red-700;
+      @apply border-red-800;
+    }
+  }
+
+  &.btn--success {
+    @apply bg-green-500;
+    @apply border-green-600;
+    &.darker {
+      @apply bg-green-700;
+      @apply border-green-800;
+    }
+  }
+
+  &.btn--info {
+    @apply bg-teal-500;
+    @apply border-teal-600;
+    &.darker {
+      @apply bg-teal-700;
+      @apply border-teal-800;
+    }
+  }
+}
+
+.error-message {
+  @apply text-red-500;
+  @apply rounded-lg;
+  @apply shadow-2xl;
+  @apply p-0;
+  @apply px-2;
+  @apply mx-2;
+  @apply text-sm;
+  @apply w-full;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
