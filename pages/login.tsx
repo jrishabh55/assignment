@@ -1,8 +1,8 @@
-import { FC, useEffect } from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Login from 'components/Login';
 
-const LoginPage = () => {
+const LoginPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
   const router = useRouter();
   useEffect(() => {
     if (router.pathname !== 'pathname') {
