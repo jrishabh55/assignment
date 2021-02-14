@@ -43,7 +43,7 @@ const Register: FC<RegisterProps> = ({ handleSubmit }) => {
           {...password}
         />
         <Button className="mt-8" variant="info" type="submit" block bold>
-          Login
+          Register
         </Button>
       </Form>
     </div>
