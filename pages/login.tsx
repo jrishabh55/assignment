@@ -1,17 +1,17 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Login from 'components/Login';
+import Login, { LoginProps } from 'components/Login';
 
 const LoginPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
   const router = useRouter();
-  useEffect(() => {
-    if (router.pathname !== 'pathname') {
-    }
-  }, []);
+
+  const handleSubmit: LoginProps['onSubmit'] = () => {
+    router.push('/');
+  };
 
   return (
     <div className="align-middle self-center mx-auto -mt-48">
-      <Login />
+      <Login onSubmit={handleSubmit} />
     </div>
   );
 };
