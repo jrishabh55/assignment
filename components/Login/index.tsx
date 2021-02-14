@@ -17,8 +17,8 @@ const Login: FC<LoginProps> = ({ handleSubmit }) => {
   };
 
   return (
-    <div className="card w-4/12 p-2 -mt-48 pb-10">
-      <h1 className="text-lg mb-10 text-center border-b-2 pb-2">Login</h1>
+    <div className="card p-2 pb-6">
+      <h1 className="text-lg mb-6 text-center border-b-2 pb-2">Login</h1>
       <form className="flex-center flex-col space-y-6 w-96 m-auto" onSubmit={onSubmit}>
         <Input name="username" placeholder="Username" block {...username} />
         <Input name="password" type="password" placeholder="Password" block {...username} />
