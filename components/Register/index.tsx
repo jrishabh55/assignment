@@ -5,23 +5,23 @@ import { FC, FormEvent } from 'react';
 import { useInput } from 'rooks';
 
 export interface RegisterProps {
-  handleSubmit?: (arg: { email: string; username: string; password: string }) => void;
+  onSubmit?: (arg: { email: string; username: string; password: string }) => void;
 }
 
-const Register: FC<RegisterProps> = ({ handleSubmit }) => {
+const Register: FC<RegisterProps> = ({ onSubmit }) => {
   const username = useInput('');
   const email = useInput('');
   const password = useInput('');
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSubmit?.({ email: email.value, username: username.value, password: password.value });
+    onSubmit?.({ email: email.value, username: username.value, password: password.value });
   };
 
   return (
     <div className="card p-2 pb-6">
       <h1 className="text-lg mb-6 text-center border-b-2 pb-2">Register</h1>
-      <Form className="w-96" onSubmit={onSubmit}>
+      <Form className="w-96" onSubmit={handleSubmit}>
         <Input
           name="username"
           required
