@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import Form from 'components/Form';
 import Input from 'components/Form/Input';
 import { FC, FormEvent } from 'react';
 import { useInput } from 'rooks';
@@ -19,13 +20,13 @@ const Login: FC<LoginProps> = ({ handleSubmit }) => {
   return (
     <div className="card p-2 pb-6">
       <h1 className="text-lg mb-6 text-center border-b-2 pb-2">Login</h1>
-      <form className="flex-center flex-col space-y-6 w-96 m-auto" onSubmit={onSubmit}>
+      <Form className="w-96" onSubmit={onSubmit}>
         <Input name="username" placeholder="Username" block {...username} />
         <Input name="password" type="password" placeholder="Password" block {...username} />
         <Button className="mt-8" variant="info" type="submit" block bold>
           Login
         </Button>
-      </form>
+      </Form>
     </div>
   );
 };
