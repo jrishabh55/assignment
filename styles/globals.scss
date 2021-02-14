@@ -43,6 +43,14 @@
   @apply border;
   @apply text-white;
   @apply text-lg;
+  @apply focus:outline-none;
+  @apply focus:border-transparent;
+  @apply focus:shadow-none;
+  @apply hover:opacity-80;
+
+  &:active {
+    @apply shadow-none;
+  }
 
   &.block {
     @apply w-full;
