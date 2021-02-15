@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
 import Register, { RegisterProps } from 'components/Register';
 import { useRouter } from 'next/router';
+import CenterContainer from 'components/CenterContainer';
 
 const RegisterPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
   const router = useRouter();
@@ -9,9 +10,9 @@ const RegisterPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDiv
   };
 
   return (
-    <div className="align-middle self-center mx-auto -mt-48">
+    <CenterContainer>
       <Register onSubmit={handleSubmit} />
-    </div>
+    </CenterContainer>
   );
 };
 
