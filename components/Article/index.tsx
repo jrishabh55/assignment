@@ -5,7 +5,7 @@ export type ArticleProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLEl
 
 const Article: FC<ArticleProps> = ({ className, children, ...props }) => {
   return (
-    <article className={cx('flex flex-col w-full card', className)} {...props}>
+    <article className={cx('flex flex-col w-full card overflow-hidden', className)} {...props}>
       {children}
     </article>
   );
