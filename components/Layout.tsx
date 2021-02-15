@@ -10,7 +10,7 @@ const Layout: FC = ({ children }) => {
       <div className="flex flex-col w-screen h-screen">
         <Meta />
         <Header />
-        <main className="flex flex-grow">{children}</main>
+        <main className="flex flex-grow bg-gray-300">{children}</main>
         <Footer />
       </div>
     </>
