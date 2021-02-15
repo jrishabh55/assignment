@@ -1,7 +1,15 @@
-import Layout from 'components/Layout';
 import '../styles/globals.scss';
 
-function MyApp({ Component, pageProps }) {
+import Layout from 'components/Layout';
+import { ComponentClass, FC, ReactNode } from 'react';
+
+function MyApp({
+  Component,
+  pageProps
+}: {
+  Component: ComponentClass | FC;
+  pageProps: Record<string, unknown>;
+}): ReactNode {
   return (
     <Layout>
       <Component {...pageProps} />

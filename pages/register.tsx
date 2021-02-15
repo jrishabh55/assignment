@@ -1,7 +1,7 @@
-import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
+import CenterContainer from 'components/CenterContainer';
 import Register, { RegisterProps } from 'components/Register';
 import { useRouter } from 'next/router';
-import CenterContainer from 'components/CenterContainer';
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
 const RegisterPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
   const router = useRouter();

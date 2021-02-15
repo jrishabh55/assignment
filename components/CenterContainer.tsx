@@ -1,5 +1,5 @@
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 import cx from 'classnames';
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
 const CenterContainer: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = ({
   children,

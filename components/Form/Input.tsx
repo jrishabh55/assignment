@@ -1,6 +1,5 @@
-import { FC, DetailedHTMLProps, InputHTMLAttributes } from 'react';
-
 import cx from 'classnames';
+import { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
 
 export interface InputProps
   extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {

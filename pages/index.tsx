@@ -1,8 +1,9 @@
 import Button from 'components/Button';
 import CenterContainer from 'components/CenterContainer';
 import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
 
-export default function Home() {
+export default function Home(): ReactNode {
   const router = useRouter();
   return (
     <>

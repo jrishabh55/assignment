@@ -1,7 +1,7 @@
-import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Login, { LoginProps } from 'components/Login';
 import CenterContainer from 'components/CenterContainer';
+import Login, { LoginProps } from 'components/Login';
+import { useRouter } from 'next/router';
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
 const LoginPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = () => {
   const router = useRouter();
