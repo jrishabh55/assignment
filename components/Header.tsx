@@ -5,7 +5,7 @@ import { FC } from 'react';
 const Header: FC<{ showSearch?: boolean }> = ({ showSearch }) => {
   return (
     <>
-      <header className="border-b-2 min:h-16 flex items-center p-2 overflow-hidden">
+      <header className="border-b-2 min:h-16 flex items-center p-2">
         <Link href="/">Skuad Reddit</Link>
         {showSearch && (
           <div className="w-96 ml-auto">
