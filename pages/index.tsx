@@ -1,17 +1,20 @@
-import Head from 'next/head';
+import Button from 'components/Button';
+import CenterContainer from 'components/CenterContainer';
 import Login from 'components/Login';
-import Layout from 'components/Layout';
-import Footer from 'components/Footer';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <Layout>
-      <Head>
-        <title>Skuad Assignment</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Login />
-    </Layout>
+    <>
+      <CenterContainer>
+        <div className="flex flex-col space-y-3 w-48">
+          <Button variant="success" onClick={() => router.push('/login')}>
+            Login
+          </Button>
+          <Button onClick={() => router.push('/register')}>Register</Button>
+        </div>
+      </CenterContainer>
+    </>
   );
 }
