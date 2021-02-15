@@ -1,6 +1,5 @@
 import Button from 'components/Button';
 import CenterContainer from 'components/CenterContainer';
-import Login from 'components/Login';
 import { useRouter } from 'next/router';
 
 export default function Home() {
