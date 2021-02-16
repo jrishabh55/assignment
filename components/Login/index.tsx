@@ -6,7 +6,7 @@ import { FC, FormEvent } from 'react';
 import { useInput } from 'rooks';
 
 export interface LoginProps {
-  onSubmit?: (arg: { username: string; password: string }) => void;
+  onSubmit?: (arg: { email: string; password: string }) => void;
 }
 
 const Login: FC<LoginProps> = ({ onSubmit }) => {
@@ -15,7 +15,7 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit?.({ username: username.value, password: password.value });
+    onSubmit?.({ email: username.value, password: password.value });
   };
 
   return (
