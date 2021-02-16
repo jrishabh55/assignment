@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Skuad Assignment
 
-## Getting Started
+Live on [https://skuad.rishabhjain.dev]
 
-First, run the development server:
+## Tools used
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Next.Js - Frontend, Backend
+- Vercel - Deplyment
+- TailwindCSS - Design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Pre-requisite
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- FaunaDB account
+- Node.JS installed
+- Yarn installed
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Steps
 
-## Learn More
+- Clone the repo
+- Import schema.gql to faunadb for creating appropriate indexes and collections.
+- Run - `yarn`
+- Copy `.env.sample` file to `.env`
+- Add the value of in the FaunaDB secret key in the `env` file
+- Run - `yarn dev`
 
-To learn more about Next.js, take a look at the following resources:
+## TODO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Search
+- Tags
+- Testcases - UI (Cypress/TestProject.io), UnitTest - Jest, Snapshots - Enzyme
+- Condition for only having 1 open threads
+- Promotion to MOD in a board.
