@@ -1,14 +1,23 @@
 import Article, { ArticleBody, ArticleFooter, ArticleHeader } from 'components/Article';
-import { boards } from 'mocks/board';
+import { stateContext, types } from 'context/stateContext';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
+import { api } from 'utils/api';
 
 const Dashboard: FC = () => {
+  const [{ boards }, dispatch] = useContext(stateContext);
+
+  useEffect(() => {
+    api('board').then(({ boards }) => {
+      dispatch({ type: types.SET_BOARDS, payload: boards });
+    });
+  }, [dispatch]);
+
   return (
-    <section className="mt-4 mx-auto p-2 rounded max-w-screen-md space-y-3 bg-transparent">
-      {boards.map((board) => (
-        <Link key={board.id} href={`/boards/${board.slug}`}>
-          <Article className="max-h-48 h-48 cursor-pointer">
+    <section className="mt-4 mx-auto p-2 rounded max-w-screen-md space-y-3 bg-transparent w-2/3">
+      {boards.map(({ data: board, ref }) => (
+        <Link key={ref['@ref'].id} href={`/boards/${board.slug}`}>
+          <Article className="max-h-48 cursor-pointer">
             <ArticleHeader className="border border-b-0 shadow-md rounded-none panel-header p-2">
               {board.title}
             </ArticleHeader>
@@ -16,8 +25,8 @@ const Dashboard: FC = () => {
               {board.description}
             </ArticleBody>
             <ArticleFooter className="grid grid-cols-2 divide-x divide-gray-500">
-              <span>Discussions: {board.discussions.length}</span>
-              <span>Owner: {board.author.username}</span>
+              <span>Threads: {board?.threads?.length || 0}</span>
+              <span>Mods: {board?.mods?.length}</span>
             </ArticleFooter>
           </Article>
         </Link>
