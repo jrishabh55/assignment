@@ -2,7 +2,7 @@ import cookie from 'cookie';
 import { query as q } from 'faunadb';
 import { kebabCase } from 'lodash';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { FAUNA_SECRET_COOKIE, faunaClient, getAllDocumentsByIndex } from 'utils/fauna-auth';
+import { FAUNA_SECRET_COOKIE, faunaClient } from 'utils/fauna-auth';
 
 export default async function getBoard(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { body, query } = req;
