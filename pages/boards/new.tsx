@@ -33,7 +33,7 @@ const NewBoard: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElem
         <h1 className="text-lg mb-6 text-center border-b-2 pb-2">Create new board</h1>
         <Form className="w-96" onSubmit={handleSubmit}>
           <Input name="title" required min="4" max="12" placeholder="title" block {...title} />
-          <TextArea placeholder="Description" onChange={description.onChange}>
+          <TextArea placeholder="Description" onChange={description.onChange as any}>
             {description.value}
           </TextArea>
           <Button className="mt-8" variant="info" type="submit" block bold>
