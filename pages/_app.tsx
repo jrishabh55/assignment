@@ -22,6 +22,10 @@ function MyApp({
     if (state.user?.username && loginRoutes.includes(router.pathname)) {
       router.push('/dashboard');
     }
+
+    if (!state.user?.username && !loginRoutes.includes(router.pathname)) {
+      router.push('/login');
+    }
   }, [router, state.user]);
 
   useEffect(() => {
