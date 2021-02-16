@@ -28,7 +28,7 @@ const Boards: FC = () => {
 
   return (
     <>
-      <section className="mt-4 mx-auto p-2 rounded max-w-screen-md space-y-3 bg-transparent w-2/3">
+      <section className="mt-4 mx-auto p-2 rounded max-w-screen-md self-start space-y-3 w-2/3">
         <div className="p-2 rounded rounded-b-none  border bg-transparent">
           <h2 className="text-3xl mb-4">
             <span className="border-b-2 p-2">{board?.data?.title}</span>
