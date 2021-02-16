@@ -1,6 +1,7 @@
 import Button from 'components/Button';
 import Form from 'components/Form';
 import Input from 'components/Form/Input';
+import Link from 'next/link';
 import { FC, FormEvent } from 'react';
 import { useInput } from 'rooks';
 
@@ -46,6 +47,11 @@ const Register: FC<RegisterProps> = ({ onSubmit }) => {
           Register
         </Button>
       </Form>
+      <div className="flex justify-end mt-2 text-gray-400">
+        <Link href="/login">
+          <span className="text-right inline-block  underline cursor-pointer"> &#x2190; Login</span>
+        </Link>
+      </div>
     </div>
   );
 };

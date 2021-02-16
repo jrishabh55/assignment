@@ -1,6 +1,7 @@
 import Button from 'components/Button';
 import Form from 'components/Form';
 import Input from 'components/Form/Input';
+import Link from 'next/link';
 import { FC, FormEvent } from 'react';
 import { useInput } from 'rooks';
 
@@ -44,6 +45,13 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
           Login
         </Button>
       </Form>
+      <div className="flex justify-end mt-2">
+        <Link href="/register">
+          <span className="text-right inline-block text-gray-400 underline cursor-pointer">
+            &#x2190; Register
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
