@@ -30,11 +30,15 @@ export default async function getBoard(req: NextApiRequest, res: NextApiResponse
       return res.status(500).send({ err: 'comment is missing.' });
     }
 
+    const user: any = await faunaClient(faunaSecret).query(q.Identity());
+
     const board = {
       comment: body.comment,
       thread: q.Ref(q.Collection('Thread'), slug),
-      user: q.Identity()
+      user: user,
+      timestamp: Date.now()
     };
+
     const ref = await faunaClient(faunaSecret).query(
       q.Create(q.Collection('Comment'), { data: board })
     );
