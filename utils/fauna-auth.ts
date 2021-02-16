@@ -36,3 +36,17 @@ export const getAllDocuments = async ({
   );
   return boards.data;
 };
+
+export const getAllDocumentsByIndex = async ({
+  faunaSecret,
+  index,
+  param
+}: Record<string, unknown>): Promise<Record<string, unknown>> => {
+  const boards: any = await faunaClient(faunaSecret as string).query(
+    q.Map(
+      q.Paginate(q.Match(q.Index(index), param)),
+      q.Lambda((x) => q.Get(x))
+    )
+  );
+  return boards.data;
+};
