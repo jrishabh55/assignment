@@ -15,7 +15,7 @@ const RegisterPage: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDiv
       if (data.err) {
         return alert(data.err);
       }
-      dispatch({ type: types.SET_USER, payload: data });
+      dispatch({ type: types.SET_USER, payload: data.data });
       router.push('/dashboard');
     });
   };
