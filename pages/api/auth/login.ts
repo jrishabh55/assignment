@@ -11,7 +11,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse): 
     }
 
     const loginRes: { secret: string } = await serverClient.query(
-      q.Login(q.Match(q.Index('users_by_email'), email), {
+      q.Login(q.Match(q.Index('unique_User_email'), email), {
         password
       })
     );
