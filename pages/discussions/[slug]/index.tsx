@@ -60,13 +60,18 @@ const Discussion: FC = () => {
         <div className="p-2 rounded rounded-b-none  border bg-transparent">
           <h2 className="text-3xl mb-4 flex justify-between">
             <span className="border-b-2 p-2">{thread?.data?.title}</span>
-            <Button
-              className="rounded-full w-24 h-10 flex items-center justify-center ml-auto text-lg"
-              title="Add new thread"
-              variant="danger"
-              onClick={closeThread}>
-              Close
-            </Button>
+            {thread.status === 'open' && (
+              <Button
+                className="rounded-full w-24 h-10 flex items-center justify-center ml-auto text-lg"
+                title="Add new thread"
+                variant="danger"
+                onClick={closeThread}>
+                Close
+              </Button>
+            )}
+            {thread.status !== 'close' && (
+              <span className="bg-red-500 flex-center rounded-lg p-2 text-white">Closed</span>
+            )}
           </h2>
           <blockquote className="text-sm">{thread?.data?.description}</blockquote>
         </div>
