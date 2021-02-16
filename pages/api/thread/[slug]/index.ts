@@ -16,26 +16,16 @@ export default async function getBoard(req: NextApiRequest, res: NextApiResponse
     query: { slug }
   } = req;
 
-  if (req.method === 'GET') {
-    return res.status(200).json({
-      thread: await getAllDocumentsByIndex({
-        index: 'unique_Thread_slug',
-        param: slug,
-        faunaSecret
-      })
-    });
-  }
-
-  if (req.method === 'POST') {
+  if (req.method === 'PUT') {
     const board = {
       title: body.title,
       slug: kebabCase(body.title) + '-' + Date.now(),
       description: body.description,
-      status: 'open',
+      status: 'close',
       board: q.Ref(q.Collection('Board'), query.board_id)
     };
     const ref = await faunaClient(faunaSecret).query(
-      q.Create(q.Collection('Thread'), { data: board })
+      q.Update(q.Ref(q.Collection('Thread'), slug), { data: board })
     );
     return res.status(200).json({ board: ref });
   }

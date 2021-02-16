@@ -16,12 +16,29 @@ export default async function getBoard(req: NextApiRequest, res: NextApiResponse
   }
 
   if (req.method === 'GET') {
+    const comments: any = await getAllDocumentsByIndex({
+      index: 'comment_thread_by_thread',
+      param: q.Ref(q.Collection('Thread'), slug),
+      faunaSecret
+    });
+
+    // console.log(comments);
+
+    // await Promise.all(
+    //   comments.map(async (c) => {
+    //     if (c.data.user) {
+    //       const val = await faunaClient(faunaSecret).query(q.Get(c.user));
+    //       return { ...c, data: { ...c.data, user: val } };
+    //     }
+
+    //     return c;
+    //   })
+    // );
+
+    console.log(comments);
+
     return res.status(200).json({
-      comments: await getAllDocumentsByIndex({
-        index: 'comment_thread_by_thread',
-        param: q.Ref(q.Collection('Thread'), slug),
-        faunaSecret
-      })
+      comments
     });
   }
 
