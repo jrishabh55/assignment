@@ -54,6 +54,10 @@ const Discussion: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (!thread) {
+    return <span>Failed</span>;
+  }
+
   return (
     <>
       <section className="mt-4 mx-auto p-2 rounded max-w-screen-md self-start w-3/4">

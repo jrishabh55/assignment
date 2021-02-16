@@ -31,6 +31,10 @@ const NewThread: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivEle
     });
   };
 
+  if (!board) {
+    return <span>Failed</span>;
+  }
+
   return (
     <CenterContainer>
       <div className="card p-2 pb-6">
