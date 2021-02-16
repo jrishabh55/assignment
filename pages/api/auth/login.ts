@@ -1,6 +1,6 @@
 import { query as q } from 'faunadb';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { serializeFaunaCookie, serverClient } from 'utils/fauna-auth';
+import { faunaClient, serializeFaunaCookie, serverClient } from 'utils/fauna-auth';
 
 export default async function login(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { email, password } = await req.body;
@@ -10,7 +10,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse): 
       throw new Error('Email and password must be provided.');
     }
 
-    const loginRes: { secret: string } = await serverClient.query(
+    const loginRes: { secret: string; ref: any } = await serverClient.query(
       q.Login(q.Match(q.Index('unique_User_email'), email), {
         password
       })
@@ -19,12 +19,15 @@ export default async function login(req: NextApiRequest, res: NextApiResponse): 
     if (!loginRes.secret) {
       throw new Error('No secret present in login query response.');
     }
+    console.log(loginRes);
+
+    const user: any = await faunaClient(loginRes.secret).query(q.Get(q.Identity()));
 
     const cookieSerialized = serializeFaunaCookie(loginRes.secret);
 
     res.setHeader('Set-Cookie', cookieSerialized);
-    res.status(200).end();
+    res.status(200).json(user.data);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ err: error.message });
   }
 }
