@@ -1,17 +1,24 @@
 import cx from 'classnames';
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, FC, forwardRef, HTMLAttributes } from 'react';
 
-export type ArticleProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+export type ArticleProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+  forwardRef: any;
+};
 
-const Article: FC<ArticleProps> = ({ className, children, ...props }) => {
+const Article: FC<ArticleProps> = ({ className, children, forwardRef, ...props }) => {
   return (
-    <article className={cx('flex flex-col w-full card overflow-hidden', className)} {...props}>
+    <article
+      className={cx('flex flex-col w-full card overflow-hidden', className)}
+      ref={forwardRef}
+      {...props}>
       {children}
     </article>
   );
 };
+Article.displayName = 'Article';
 
-export default Article;
+// eslint-disable-next-line react/display-name
+export default forwardRef((props, ref) => <Article {...props} forwardRef={ref} />);
 
 export type { ArticleBodyProps } from './ArticleBody';
 export { default as ArticleBody } from './ArticleBody';
