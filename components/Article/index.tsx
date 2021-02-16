@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { DetailedHTMLProps, FC, forwardRef, HTMLAttributes } from 'react';
 
 export type ArticleProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
-  forwardRef: any;
+  forwardRef?: any;
 };
 
 const Article: FC<ArticleProps> = ({ className, children, forwardRef, ...props }) => {
@@ -18,7 +18,9 @@ const Article: FC<ArticleProps> = ({ className, children, forwardRef, ...props }
 Article.displayName = 'Article';
 
 // eslint-disable-next-line react/display-name
-export default forwardRef((props, ref) => <Article {...props} forwardRef={ref} />);
+export default forwardRef((props, ref) => (
+  <Article {...props} forwardRef={ref} />
+)) as FC<ArticleProps>;
 
 export type { ArticleBodyProps } from './ArticleBody';
 export { default as ArticleBody } from './ArticleBody';
