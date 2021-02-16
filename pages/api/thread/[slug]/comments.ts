@@ -12,7 +12,7 @@ export default async function getBoard(req: NextApiRequest, res: NextApiResponse
   const faunaSecret = cookies[FAUNA_SECRET_COOKIE];
 
   if (!faunaSecret) {
-    return res.status(401).send('Auth cookie missing.');
+    return res.status(401).json({ err: 'Auth cookie missing' });
   }
 
   if (req.method === 'GET') {
