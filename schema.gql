@@ -1,0 +1,35 @@
+type User {
+  id: ID!
+  username: String! @unique
+  email: String! @unique
+  password: String!
+  boards: [Board] @relation(name: "board_owner")
+  banned: [Board] @relation(name: "banned_board")
+}
+
+type Board {
+  id: ID!
+  title: String!
+  slug: String! @unique
+  description: String!
+  threads: [Thread] @relation
+  mods: [User] @relation(name: "board_owner")
+  banned: [User] @relation(name: "banned_board")
+}
+
+type Thread {
+  id: ID!
+  title: String!
+  slug: String! @unique
+  description: String!
+  status: String!
+  board: Board @relation
+  comments: [Comment] @relation
+}
+
+type Comment {
+  id: ID!
+  comment: String!
+  thread: Thread! @relation
+  user: User! @relation
+}
