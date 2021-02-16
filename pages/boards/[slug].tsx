@@ -45,8 +45,14 @@ const Boards: FC = () => {
         {threads?.map(({ data: thread }) => (
           <Link key={thread.id} href={`/discussions/${thread.slug}`}>
             <Article className="max-h-48 cursor-pointer">
-              <ArticleHeader className="border border-b-0 shadow-md rounded-none panel-header p-2">
-                {thread.title}
+              <ArticleHeader className="border border-b-0 shadow-md rounded-none panel-header p-2 flex justify-between">
+                {thread.title}{' '}
+                <span
+                  className={`${
+                    thread.status === 'close' ? 'bg-red-500' : 'bg-green-500'
+                  } p-1 rounded-full text-white flex-center w-20`}>
+                  ({thread.status})
+                </span>
               </ArticleHeader>
               <ArticleBody className="whitespace-nowrap overflow-hidden overflow-ellipsis">
                 {thread.description}
