@@ -15,8 +15,8 @@ export enum types {
   UPDATE_COMMENT
 }
 
-export const defaultState = { user: {}, boards: [], threads: [], comments: [] };
-export type State = typeof defaultState;
+export const defaultState = { user: null, boards: [], threads: [], comments: [] };
+export type State = typeof defaultState & { user: null | { username: string; email: string } };
 
 export const stateContext: Context<[State, Dispatch<Action>]> = createContext([
   defaultState,
