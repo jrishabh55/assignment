@@ -1,11 +1,14 @@
 import Article, { ArticleBody, ArticleFooter, ArticleHeader } from 'components/Article';
+import Button from 'components/Button';
 import { stateContext, types } from 'context/stateContext';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { FC, useContext, useEffect } from 'react';
 import { api } from 'utils/api';
 
 const Dashboard: FC = () => {
   const [{ boards }, dispatch] = useContext(stateContext);
+  const router = useRouter();
 
   useEffect(() => {
     api('board').then(({ boards }) => {
@@ -15,6 +18,12 @@ const Dashboard: FC = () => {
 
   return (
     <section className="mt-4 mx-auto p-2 rounded max-w-screen-md space-y-3 bg-transparent w-2/3">
+      <Button
+        className="rounded-full w-10 h-10 flex items-center justify-center ml-auto text-lg"
+        title="Add new board"
+        onClick={() => router.push('/boards/new')}>
+        &#43;
+      </Button>
       {boards.map(({ data: board, ref }) => (
         <Link key={ref['@ref'].id} href={`/boards/${board.slug}`}>
           <Article className="max-h-48 cursor-pointer">

@@ -1,4 +1,5 @@
 import Article, { ArticleBody, ArticleFooter, ArticleHeader } from 'components/Article';
+import Button from 'components/Button';
 import { stateContext, types } from 'context/stateContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -30,8 +31,14 @@ const Boards: FC = () => {
     <>
       <section className="mt-4 mx-auto p-2 rounded max-w-screen-md self-start space-y-3 w-2/3">
         <div className="p-2 rounded rounded-b-none  border bg-transparent">
-          <h2 className="text-3xl mb-4">
+          <h2 className="flex justify-between text-3xl mb-4">
             <span className="border-b-2 p-2">{board?.data?.title}</span>
+            <Button
+              className="rounded-full w-10 h-10 flex items-center justify-center ml-auto text-lg"
+              title="Add new thread"
+              onClick={() => router.push(`/discussions/${board?.data.slug}/new`)}>
+              &#43;
+            </Button>
           </h2>
           <p className="text-sm">{board?.data?.description}</p>
         </div>
