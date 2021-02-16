@@ -6,8 +6,8 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse):
   const { email, password, username } = await req.body;
 
   try {
-    if (!email || !password) {
-      throw new Error('Email and password must be provided.');
+    if (!email || !password || !username) {
+      throw new Error('Email, Username and password must be provided.');
     }
     console.log(`email: ${email} trying to create user.`);
 
@@ -42,8 +42,8 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse):
     const cookieSerialized = serializeFaunaCookie(loginRes.secret);
 
     res.setHeader('Set-Cookie', cookieSerialized);
-    res.status(200).end();
+    res.status(200).json(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ err: error.message });
   }
 }
