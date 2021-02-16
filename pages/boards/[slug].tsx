@@ -42,8 +42,8 @@ const Boards: FC = () => {
           </h2>
           <p className="text-sm">{board?.data?.description}</p>
         </div>
-        {threads?.map(({ data: thread }) => (
-          <Link key={thread.id} href={`/discussions/${thread.slug}`}>
+        {threads?.map(({ data: thread, ref }) => (
+          <Link key={ref?.['@ref'].id} href={`/discussions/${thread.slug}`}>
             <Article className="max-h-48 cursor-pointer">
               <ArticleHeader className="border border-b-0 shadow-md rounded-none panel-header p-2 flex justify-between">
                 {thread.title}{' '}
