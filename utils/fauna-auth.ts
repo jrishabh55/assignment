@@ -1,5 +1,5 @@
 import cookie from 'cookie';
-import faunadb, { Client } from 'faunadb';
+import faunadb, { Client, query as q } from 'faunadb';
 
 export const FAUNA_SECRET_COOKIE = 'faunaSecret';
 
@@ -22,4 +22,17 @@ export const serializeFaunaCookie = (userSecret: string): string => {
     path: '/'
   });
   return cookieSerialized;
+};
+
+export const getAllDocuments = async ({
+  faunaSecret,
+  collection
+}: Record<string, string>): Promise<Record<string, unknown>> => {
+  const boards: any = await faunaClient(faunaSecret).query(
+    q.Map(
+      q.Paginate(q.Documents(q.Collection(collection))),
+      q.Lambda((x) => q.Get(x))
+    )
+  );
+  return boards.data;
 };
